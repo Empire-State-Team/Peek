@@ -31,7 +31,7 @@
         [Required]
         public string CreatedUserId { get; set; }
 
-        public User CreatedUser { get; set; }
+        public virtual User CreatedUser { get; set; }
 
         public virtual ICollection<Product> Products
         {
