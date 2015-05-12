@@ -8,7 +8,7 @@
 
     using Peek.Data;
     using Peek.Data.Migrations;
-    using Peek.Web.App_Start;
+    using Peek.Web.Infrastructure.Mapping;
 
     public class MvcApplication : HttpApplication
     {
@@ -19,8 +19,7 @@
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            AutoMapperConfig.Configure();
-
+            AutoMapperConfig.Execute();
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<PeekDbContext, Configuration>());
         }
     }
