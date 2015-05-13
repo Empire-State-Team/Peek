@@ -1,17 +1,17 @@
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Peek.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Peek.Web.App_Start.NinjectWebCommon), "Stop")]
-
 namespace Peek.Web.App_Start
 {
     using System;
+    using System.Data.Entity;
     using System.Web;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
     using Ninject;
     using Ninject.Web.Common;
-    using Peek.Data.UnitOfWork;
+
     using Peek.Data;
+    using Peek.Data.UnitOfWork;
 
     public static class NinjectWebCommon 
     {
@@ -63,7 +63,9 @@ namespace Peek.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IPeekData>().To<PeekData>().WithConstructorArgument("context", new PeekDbContext());
+            kernel.Bind<DbContext>().To<PeekDbContext>();
+            kernel.Bind<IPeekDbContext>().To<PeekDbContext>();
+            kernel.Bind<IPeekData>().To<PeekData>();
         }        
     }
 }
