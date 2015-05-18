@@ -7,8 +7,8 @@
     @Styles.Render("~/Content/css")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
+    <section class="navbar navbar-inverse navbar-fixed-top">
+        <article class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
@@ -20,20 +20,23 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
+        </article>
+    </section>
+    <section class="container body-content">
+        <article class="col-md-3">
+            @Html.Action("Index", "LeftSidebar")
+        </article>
+        <article class="col-md-9" id="main-content">
+            @RenderBody()
+        </article>
         <hr />
         <footer>
             <p class="text-center">Peek&trade; 2015 - ASP.NET MVC Online Shop Application</p>
         </footer>
-    </div>
+    </section>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
