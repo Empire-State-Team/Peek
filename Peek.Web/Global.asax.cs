@@ -19,6 +19,7 @@
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
+            ViewEnginesConfig.RegisterViewEngines();
             AutoMapperConfig.Execute();
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<PeekDbContext, Configuration>());
         }

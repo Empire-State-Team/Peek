@@ -1,0 +1,5 @@
+﻿@model Peek.Web.ViewModels.Products.ProductPreviewViewModel
+
+<div>
+    @Html.ActionLink(Model.Name, "ById", "Products", new { id = Model.Id }, null)
+</div>

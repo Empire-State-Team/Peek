@@ -1,5 +1,6 @@
 namespace Peek.Data.Migrations
 {
+    using System;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using Microsoft.AspNet.Identity;
@@ -26,6 +27,41 @@ namespace Peek.Data.Migrations
                 var admin = new User { UserName = "admin", Email = "admin@peek.com" };
                 manager.Create(admin, "peekadmin");
                 manager.AddToRole(admin.Id, "Administrator");
+            }
+
+            if (!context.Categories.Any())
+            {
+                context.Categories.Add(new Category
+                {
+                    Name = "Mobile Phones",
+                    IsActive = true,
+                    CreatedOn = DateTime.Now,
+                    CreatedUser = context.Users.First()
+                });
+
+                context.Categories.Add(new Category
+                {
+                    Name = "Hardware",
+                    IsActive = true,
+                    CreatedOn = DateTime.Now,
+                    CreatedUser = context.Users.First()
+                });
+
+                context.Categories.Add(new Category
+                {
+                    Name = "Cars",
+                    IsActive = true,
+                    CreatedOn = DateTime.Now,
+                    CreatedUser = context.Users.First()
+                });
+
+                context.Categories.Add(new Category
+                {
+                    Name = "Other",
+                    IsActive = true,
+                    CreatedOn = DateTime.Now,
+                    CreatedUser = context.Users.First()
+                });
             }
         }
     }
