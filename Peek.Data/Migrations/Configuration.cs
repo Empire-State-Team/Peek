@@ -11,7 +11,7 @@ namespace Peek.Data.Migrations
 
     public sealed class Configuration : DbMigrationsConfiguration<PeekDbContext>
     {
-        private IRandomGenerator random;
+        private readonly IRandomGenerator random;
         private UserManager<User> userManager;
 
         public Configuration()
@@ -151,7 +151,7 @@ namespace Peek.Data.Migrations
 
                 context.Categories.Add(new Category
                 {
-                    Name = this.random.RandomString(150, 300),
+                    Name = this.random.RandomString(5, 15),
                     IsActive = true,
                     CreatedOn = DateTime.Now,
                     CreatedUser = context.Users.ToList()[this.random.RandomNumber(0, context.Users.Count() - 1)]
@@ -168,6 +168,12 @@ namespace Peek.Data.Migrations
                 return;
             }
 
+            var adminRole = new IdentityRole(PeekConstants.AdminRole);
+            context.Roles.Add(adminRole);
+            var admin = new User { UserName = PeekConstants.AdminUsername, Email = "admin@peek.com" };
+            this.userManager.Create(admin, "peekadmin");
+            this.userManager.AddToRole(admin.Id, PeekConstants.AdminRole);
+
             for (int i = 0; i < 15; i++)
             {
                 var user = new User
@@ -177,13 +183,6 @@ namespace Peek.Data.Migrations
                 };
 
                 this.userManager.Create(user, "123456");
-            }
-
-            if (!context.Roles.Any() && !context.Users.Any())
-            {
-                var admin = new User { UserName = PeekConstants.AdminUsername, Email = "admin@peek.com" };
-                this.userManager.Create(admin, "peekadmin");
-                this.userManager.AddToRole(admin.Id, PeekConstants.AdminRole);
             }
         }
     }

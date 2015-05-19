@@ -15,7 +15,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Peek", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Peek", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -26,13 +26,14 @@
         </article>
     </section>
     <section class="container body-content">
+        <h2 class="text-center col-md-9 col-md-offset-3">@ViewBag.Title</h2>
         <article class="col-md-3">
-            @Html.Action("Index", "LeftSidebar")
+            @Html.Action("Index", "LeftSidebar", new {area = string.Empty})
         </article>
         <article class="col-md-9" id="main-content">
             @RenderBody()
         </article>
-        <hr />
+        <hr/>
         <footer>
             <p class="text-center">Peek&trade; 2015 - ASP.NET MVC Online Shop Application</p>
         </footer>
