@@ -19,7 +19,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -28,7 +28,7 @@
     <section class="container body-content">
         <h2 class="text-center col-md-9 col-md-offset-3">@ViewBag.Title</h2>
         <article class="col-md-3">
-            @Html.Action("Index", "LeftSidebar", new {area = string.Empty})
+            @Html.Action("Index", "LeftSidebar", new { area = string.Empty })
         </article>
         <article class="col-md-9" id="main-content">
             @RenderBody()

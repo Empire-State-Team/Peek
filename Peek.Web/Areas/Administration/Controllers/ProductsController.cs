@@ -42,7 +42,7 @@
             dbProduct.CreatedOn = DateTime.Now;
             dbProduct.CreatedUserId = this.CurrentUserId;
 
-            if (product.Images != null && product.Images.Any())
+            if (product.Images != null && product.Images.FirstOrDefault() != null)
             {
                 var folderId = this.storageManager.UploadProductImages(product);
                 dbProduct.ImagesFolderId = folderId;
