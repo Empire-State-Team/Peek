@@ -8,7 +8,6 @@
 
     using Peek.Data;
     using Peek.Data.Migrations;
-    using Peek.Web.Infrastructure.Mapping;
 
     public class MvcApplication : HttpApplication
     {

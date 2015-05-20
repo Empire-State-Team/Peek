@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Peek.Data.UnitOfWork;
-using Peek.Web.Areas.Administration.InputModels;
-
-namespace Peek.Web.Areas.Administration.Controllers
+﻿namespace Peek.Web.Areas.Administration.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using AutoMapper;
+    using Peek.Data.UnitOfWork;
+    using Peek.Models;
+    using Peek.Web.Areas.Administration.InputModels;
+    using Peek.Web.Infrastructure.FileStorage;
+
     public class ProductsController : AdminController
     {
-        public ProductsController(IPeekData data)
+        private readonly IStorageManager storageManager;
+
+        public ProductsController(IPeekData data, IStorageManager storageManager)
             : base(data)
         {
+            this.storageManager = storageManager;
         }
 
         [HttpGet]
@@ -32,7 +38,20 @@ namespace Peek.Web.Areas.Administration.Controllers
                 return this.View(product);
             }
 
-            return this.View();
+            var dbProduct = Mapper.Map<Product>(product);
+            dbProduct.CreatedOn = DateTime.Now;
+            dbProduct.CreatedUserId = this.CurrentUserId;
+
+            if (product.Images != null && product.Images.Any())
+            {
+                var folderId = this.storageManager.UploadProductImages(product);
+                dbProduct.ImagesFolderId = folderId;
+            }
+
+            this.Data.Products.Add(dbProduct);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("ById", "Products", new { id = dbProduct.Id, area = string.Empty });
         }
 
         private void AddCategoriesToViewBag()

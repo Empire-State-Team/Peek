@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
-
-namespace Peek.Web.Areas.Administration.InputModels
+﻿namespace Peek.Web.Areas.Administration.InputModels
 {
-    public class ProductInputModel
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+    using System.Web;
+    using Peek.Models;
+    using Peek.Web.Infrastructure.Mapping;
+
+    public class ProductInputModel : IMapFrom<Product>
     {
         [Required]
         [DisplayName("Product name")]
@@ -19,10 +18,13 @@ namespace Peek.Web.Areas.Administration.InputModels
         public string Description { get; set; }
 
         [Required]
+        [Range(0.1, 100000)]
         public decimal Price { get; set; }
 
         [Required]
         public bool InStock { get; set; }
+
+        public IEnumerable<HttpPostedFileBase> Images { get; set; }
 
         [Required]
         [DisplayName("Category")]

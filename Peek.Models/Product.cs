@@ -46,6 +46,8 @@
 
         public User CreatedUser { get; set; }
 
+        public string ImagesFolderId { get; set; }
+
         public virtual ICollection<Order> Orders
         {
             get { return this.orders; }

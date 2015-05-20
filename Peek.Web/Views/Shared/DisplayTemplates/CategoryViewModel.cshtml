@@ -1,6 +1,6 @@
 ﻿@model Peek.Web.ViewModels.CategoryViewModel
 
 <div>
-    @Ajax.ActionLink(Model.Name, "ByCategory", "Products", new { id = Model.Id },
+    @Ajax.ActionLink(Model.Name, "ByCategory", "Products", new { id = Model.Id, area = string.Empty },
         new AjaxOptions { HttpMethod = "GET", InsertionMode  = InsertionMode.Replace, UpdateTargetId = "main-content" })
 </div>

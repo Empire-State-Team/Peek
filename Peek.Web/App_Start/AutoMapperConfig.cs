@@ -1,10 +1,11 @@
-﻿namespace Peek.Web.Infrastructure.Mapping
+﻿namespace Peek.Web
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Reflection;
     using AutoMapper;
+    using Peek.Web.Infrastructure.Mapping;
 
     public static class AutoMapperConfig
     {
@@ -33,6 +34,7 @@
             foreach (var map in maps)
             {
                 Mapper.CreateMap(map.Source, map.Destination);
+                Mapper.CreateMap(map.Destination, map.Source);
             }
         }
 

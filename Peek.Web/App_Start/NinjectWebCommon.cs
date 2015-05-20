@@ -1,3 +1,5 @@
+using Peek.Web.Infrastructure.FileStorage;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Peek.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Peek.Web.App_Start.NinjectWebCommon), "Stop")]
 namespace Peek.Web.App_Start
@@ -66,6 +68,8 @@ namespace Peek.Web.App_Start
             kernel.Bind<DbContext>().To<PeekDbContext>();
             kernel.Bind<IPeekDbContext>().To<PeekDbContext>();
             kernel.Bind<IPeekData>().To<PeekData>();
+
+            kernel.Bind<IStorageManager>().To<GoogleDriveStorageManager>();
         }        
     }
 }
