@@ -41,12 +41,14 @@
             };
 
             var folder = this.service.Files.Insert(folderBody).Execute();
+            var publicPermission = new Permission { Role = "reader", Type = "anyone" };
+            this.service.Permissions.Insert(publicPermission, folder.Id).Execute();
 
             foreach (var image in product.Images)
             {
                 var fileBody = new Google.Apis.Drive.v2.Data.File
                 {
-                    Title = image.FileName,
+                    Title = Guid.NewGuid().ToString("N"),
                     MimeType = "image/jpeg",
                     Parents = new[] { new ParentReference { Id = folder.Id } }
                 };
@@ -55,6 +57,14 @@
             }
 
             return folder.Id;
+        }
+
+        public IEnumerable<string> GetFileUrls(string folderId)
+        {
+            var children = this.service.Children.List(folderId).Execute();
+            var urls = children.Items.Select(c => "https://drive.google.com/uc?id=" + c.Id);
+
+            return urls;
         }
     }
 }

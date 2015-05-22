@@ -1,5 +1,6 @@
 ﻿namespace Peek.Web.ViewModels.Products
 {
+    using System.Collections.Generic;
     using AutoMapper;
     using Peek.Models;
     using Peek.Web.Infrastructure.Mapping;
@@ -17,6 +18,10 @@
         public int CategoryId { get; set; }
 
         public string CategoryName { get; set; }
+
+        public string ImagesFolderId { get; set; }
+
+        public IEnumerable<string> ImageUrls { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {

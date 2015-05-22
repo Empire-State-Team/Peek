@@ -5,15 +5,19 @@ using System.Web;
 using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using Peek.Data.UnitOfWork;
+using Peek.Web.Infrastructure.FileStorage;
 using Peek.Web.ViewModels.Products;
 
 namespace Peek.Web.Controllers
 {
     public class ProductsController : BaseController
     {
-        public ProductsController(IPeekData data) 
+        private readonly IStorageManager storageManager;
+
+        public ProductsController(IPeekData data, IStorageManager storageManager)
             : base(data)
         {
+            this.storageManager = storageManager;
         }
 
         public ActionResult ById(int id)
@@ -23,7 +27,14 @@ namespace Peek.Web.Controllers
                 .Where(p => p.Id == id)
                 .Project()
                 .To<ProductViewModel>()
-                .First();
+                .FirstOrDefault();
+
+            if (product == null)
+            {
+                throw new HttpException(404, "Product not found");
+            }
+                 
+            product.ImageUrls = this.storageManager.GetFileUrls(product.ImagesFolderId);
 
             return this.View("~/Views/Shared/DisplayTemplates/ProductViewModel.cshtml", product);
         }

@@ -11,4 +11,10 @@
 
     @Html.LabelFor(m => m.Price)
     @Html.DisplayFor(m => m.Price)
+    <br />
+
+    @foreach (var url in Model.ImageUrls)
+    {
+        <img src="@url" alt="img" class="img-responsive" />
+    }
 </div>
