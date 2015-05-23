@@ -365,7 +365,7 @@
     <Content Include="Views\LeftSidebar\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CategoryViewModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ProductPreviewViewModel.cshtml" />
-    <Content Include="Views\Products\ByCategory.cshtml" />
+    <Content Include="Views\Products\ProductList.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ProductViewModel.cshtml" />
   </ItemGroup>
   <ItemGroup>

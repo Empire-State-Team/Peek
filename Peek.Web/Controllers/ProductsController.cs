@@ -33,8 +33,11 @@ namespace Peek.Web.Controllers
             {
                 throw new HttpException(404, "Product not found");
             }
-                 
-            product.ImageUrls = this.storageManager.GetFileUrls(product.ImagesFolderId);
+
+            if (product.ImagesFolderId != null)
+            {
+                product.ImageUrls = this.storageManager.GetFileUrls(product.ImagesFolderId);
+            }
 
             return this.View("~/Views/Shared/DisplayTemplates/ProductViewModel.cshtml", product);
         }
@@ -47,7 +50,20 @@ namespace Peek.Web.Controllers
                 .Project()
                 .To<ProductPreviewViewModel>();
 
-            return this.PartialView(products);
+            return this.PartialView("ProductList", products);
+        }
+
+        public ActionResult Latest(int count = 5)
+        {
+            var products = this.Data.Products
+                .All()
+                .Where(p => p.InStock)
+                .OrderByDescending(p => p.CreatedOn)
+                .Take(count)
+                .Project()
+                .To<ProductPreviewViewModel>();
+
+            return this.PartialView("ProductList", products);
         }
     }
 }
