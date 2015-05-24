@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Peek.Web.ViewModels.Products.ProductPreviewViewModel>
+@{
+    ViewBag.Title = "My cart";
+}
+
+@if (Model.Any())
+{
+    foreach (var product in Model)
+    {
+        <div>
+            @Html.ActionLink(product.Name, "ById", "Products", new { id = product.Id }, null)
+            @Ajax.ActionLink("[remove]", "Remove", new { id = product.Id }, 
+                new AjaxOptions { HttpMethod = "POST" }, new { onclick = "$(this).parent().fadeOut()" })
+        </div>
+    }
+
+    <br />
+    @Ajax.ActionLink("Place order", "Order", new AjaxOptions { HttpMethod = "POST" })
+}
+else
+{
+    <p class="text-center">Your cart is empty at the moment.</p>
+}

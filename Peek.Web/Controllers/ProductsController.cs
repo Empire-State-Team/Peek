@@ -50,7 +50,7 @@ namespace Peek.Web.Controllers
                 .Project()
                 .To<ProductPreviewViewModel>();
 
-            return this.PartialView("ProductList", products);
+            return this.PartialView("_ProductList", products);
         }
 
         public ActionResult Latest(int count = 5)
@@ -63,7 +63,7 @@ namespace Peek.Web.Controllers
                 .Project()
                 .To<ProductPreviewViewModel>();
 
-            return this.PartialView("ProductList", products);
+            return this.PartialView("_ProductList", products);
         }
     }
 }
