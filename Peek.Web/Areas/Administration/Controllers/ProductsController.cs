@@ -1,13 +1,13 @@
-﻿using AutoMapper.QueryableExtensions;
-
-namespace Peek.Web.Areas.Administration.Controllers
+﻿namespace Peek.Web.Areas.Administration.Controllers
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
+
     using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using Peek.Data.UnitOfWork;
     using Peek.Models;
     using Peek.Web.Areas.Administration.InputModels;

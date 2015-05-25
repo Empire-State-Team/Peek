@@ -19,6 +19,7 @@
 
         [Required]
         [MinLength(3)]
+        [MaxLength(255)]
         public string Name { get; set; }
 
         [Index]
