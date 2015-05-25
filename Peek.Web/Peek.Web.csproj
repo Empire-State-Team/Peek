@@ -313,6 +313,7 @@
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Administration\Views\Products\Add.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\ProductInputModel.cshtml" />
+    <Content Include="Areas\Administration\Views\Products\Edit.cshtml" />
     <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.4.js" />
     <Content Include="Scripts\jquery-2.1.4.min.js" />

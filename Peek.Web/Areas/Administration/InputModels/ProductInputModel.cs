@@ -9,6 +9,8 @@
 
     public class ProductInputModel : IMapFrom<Product>
     {
+        public int Id { get; set; }
+
         [Required]
         [DisplayName("Product name")]
         [StringLength(255, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]

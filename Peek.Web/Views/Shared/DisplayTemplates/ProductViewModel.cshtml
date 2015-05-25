@@ -1,12 +1,18 @@
 ﻿@model Peek.Web.ViewModels.Products.ProductViewModel
 
 <div>
+    @if (User.IsAdmin())
+    {
+        @Html.ActionLink("Edit product", "Edit", "Products", new { id = Model.Id, area = "Administration" }, null)
+        <br />
+    }
+    
     @if (User.IsLoggedIn())
     {
         @Ajax.ActionLink("Add to cart", "Add", "Cart", new { id = Model.Id }, new AjaxOptions { HttpMethod = "POST" })
         <br />
     }
-    
+
     @Html.LabelFor(m => m.Name)
     @Html.DisplayFor(m => m.Name)
     <br/>

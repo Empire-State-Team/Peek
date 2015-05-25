@@ -2,6 +2,7 @@
 {
     using System.Security.Principal;
     using Microsoft.AspNet.Identity;
+    using Peek.Common;
 
     public static class PrincipalExtensions
     {
@@ -17,7 +18,7 @@
 
         public static bool IsAdmin(this IPrincipal principal)
         {
-            return principal.IsInRole("Administrator");
+            return principal.IsInRole(PeekConstants.AdminRole);
         }
     }
 }

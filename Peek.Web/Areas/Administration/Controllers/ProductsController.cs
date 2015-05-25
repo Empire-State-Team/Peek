@@ -1,4 +1,6 @@
-﻿namespace Peek.Web.Areas.Administration.Controllers
+﻿using AutoMapper.QueryableExtensions;
+
+namespace Peek.Web.Areas.Administration.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -49,6 +51,52 @@
             }
 
             this.Data.Products.Add(dbProduct);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("ById", "Products", new { id = dbProduct.Id, area = string.Empty });
+        }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var product = this.Data.Products
+                .All()
+                .Where(p => p.Id == id)
+                .Project()
+                .To<ProductInputModel>()
+                .FirstOrDefault();
+
+            if (product == null)
+            {
+                throw new HttpException(404, "Product not found");
+            }
+
+            this.AddCategoriesToViewBag();
+            return this.View(product);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ProductInputModel product)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                this.AddCategoriesToViewBag();
+                return this.View(product);
+            }
+
+            var dbProduct = this.Data.Products.Find(product.Id);
+            if (dbProduct == null)
+            {
+                throw new HttpException(404, "Product not found");
+            }
+
+            dbProduct.Name = product.Name;
+            dbProduct.Description = product.Description;
+            dbProduct.CategoryId = product.CategoryId;
+            dbProduct.InStock = product.InStock;
+            dbProduct.Price = product.Price;
+            this.Data.Products.Update(dbProduct);
             this.Data.SaveChanges();
 
             return this.RedirectToAction("ById", "Products", new { id = dbProduct.Id, area = string.Empty });
