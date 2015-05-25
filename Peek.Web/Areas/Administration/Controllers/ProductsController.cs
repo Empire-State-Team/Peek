@@ -27,7 +27,7 @@
         public ActionResult Add()
         {
             this.AddCategoriesToViewBag();
-            return this.View(new ProductInputModel());
+            return this.View(new ProductInputModel { InStock = true });
         }
 
         [HttpPost]

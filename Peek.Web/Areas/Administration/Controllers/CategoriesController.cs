@@ -1,15 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper.QueryableExtensions;
-using Peek.Data.UnitOfWork;
-using Peek.Web.Areas.Administration.InputModels;
-using Peek.Web.ViewModels;
-
-namespace Peek.Web.Areas.Administration.Controllers
+﻿namespace Peek.Web.Areas.Administration.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
+    using Peek.Data.UnitOfWork;
+    using Peek.Models;
+    using Peek.Web.ViewModels;
+
     public class CategoriesController : AdminController
     {
         public CategoriesController(IPeekData data)
@@ -25,6 +26,30 @@ namespace Peek.Web.Areas.Administration.Controllers
                 .To<CategoryViewModel>();
 
             return this.View(categories);
+        }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return this.View(new CategoryViewModel { IsActive = true });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Add(CategoryViewModel category)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(category);
+            }
+
+            var dbCategory = Mapper.Map<Category>(category);
+            dbCategory.CreatedOn = DateTime.Now;
+            dbCategory.CreatedUserId = this.CurrentUserId;
+            this.Data.Categories.Add(dbCategory);
+            this.Data.SaveChanges();
+
+            return this.RedirectToAction("Index", "Categories");
         }
 
         [HttpGet]
@@ -65,7 +90,7 @@ namespace Peek.Web.Areas.Administration.Controllers
             this.Data.Categories.Update(dbCategory);
             this.Data.SaveChanges();
 
-            return this.RedirectToAction("Index");
+            return this.RedirectToAction("Index", "Categories");
         }
     }
 }
