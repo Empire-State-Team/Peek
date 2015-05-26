@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = User.GetUsername();
+}
+
+<h2 class="text-center">Hello, @ViewBag.Title!</h2>
+
+@Html.ActionLink("My orders", "OrderHistory", "Cart", new { area = string.Empty }, null)
+<br />
+@Html.ActionLink("Change password", "ChangePassword", "Account", new { area = string.Empty }, null)

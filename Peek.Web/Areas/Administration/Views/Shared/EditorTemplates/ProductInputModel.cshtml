@@ -1,5 +1,6 @@
 ﻿@model Peek.Web.Areas.Administration.InputModels.ProductInputModel
 
+<h2 class="text-center">@ViewBag.Title</h2>
 @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()

@@ -3,18 +3,19 @@
     ViewBag.Title = "Categories";
 }
 
+<h2 class="text-center">@ViewBag.Title</h2>
 @if (Model.Any())
 {
     <table class="table table-bordered table-striped table-condensed">
         <tr>
-            <th class="text-center">Category</th>
-            <th class="text-center">Active</th>
+            <th class="text-center">@Html.LabelFor(m => Model.First().Name)</th>
+            <th class="text-center">@Html.LabelFor(m => Model.First().IsActive)</th>
             <th class="text-center">Actions</th>
         </tr>
         @foreach (var category in Model)
         {
             <tr>
-                <td>@category.Name</td>
+                <td>@Html.DisplayFor(m => category.Name)</td>
                 <td class="text-center">@Html.DisplayFor(m => category.IsActive)</td>
                 <td class="text-center">@Html.ActionLink("[Edit]", "Edit", "Categories", new { id = category.Id }, null)</td>
             </tr>

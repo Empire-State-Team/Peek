@@ -10,10 +10,11 @@
         public int Id { get; set; }
 
         [Required]
-        [DisplayName("Category name")]
+        [DisplayName("Category")]
         [StringLength(255, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string Name { get; set; }
 
+        [DisplayName("Active")]
         public bool IsActive { get; set; }
     }
 }

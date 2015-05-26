@@ -289,6 +289,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\LeftSidebarViewModel.cs" />
+    <Compile Include="ViewModels\Orders\OrderViewModel.cs" />
     <Compile Include="ViewModels\Products\ProductPreviewViewModel.cs" />
     <Compile Include="ViewModels\Products\ProductViewModel.cs" />
   </ItemGroup>
@@ -359,6 +360,8 @@
     <Content Include="Views\Products\_ProductList.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ProductViewModel.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Cart\OrderHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Peek.Common\Peek.Common.csproj">

@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using AutoMapper.QueryableExtensions;
 using Peek.Data.UnitOfWork;
 using Peek.Models;
+using Peek.Web.ViewModels;
+using Peek.Web.ViewModels.Orders;
 using Peek.Web.ViewModels.Products;
 
 namespace Peek.Web.Controllers
@@ -86,6 +88,17 @@ namespace Peek.Web.Controllers
             this.Data.SaveChanges();
 
             return new HttpStatusCodeResult(HttpStatusCode.OK);
+        }
+
+        public ActionResult OrderHistory()
+        {
+            var orders = this.Data.Orders
+                .All()
+                .Where(o => o.UserId == this.CurrentUserId)
+                .Project()
+                .To<OrderViewModel>();
+
+            return this.View(orders);
         }
     }
 }

@@ -18,5 +18,12 @@ namespace Peek.Web.Controllers
         {
             return this.View();
         }
+
+        [Authorize]
+        [ActionName("Profile")]
+        public ActionResult UserProfile()
+        {
+            return this.View();
+        }
     }
 }
