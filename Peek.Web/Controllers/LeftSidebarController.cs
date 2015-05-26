@@ -19,7 +19,7 @@
         {
             var categories = this.Data.Categories
                 .All()
-                .Where(c => c.IsActive)
+                .Where(c => c.IsActive && c.Products.Any())
                 .Project()
                 .To<CategoryViewModel>();
 

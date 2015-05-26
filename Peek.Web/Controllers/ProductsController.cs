@@ -44,12 +44,19 @@ namespace Peek.Web.Controllers
 
         public ActionResult ByCategory(int id)
         {
+            var categoryName = this.Data.Categories
+                .All()
+                .Where(c => c.Id == id)
+                .Select(c => c.Name)
+                .FirstOrDefault();
+
             var products = this.Data.Products
                 .All()
                 .Where(p => p.InStock && p.CategoryId == id)
                 .Project()
                 .To<ProductPreviewViewModel>();
 
+            this.ViewBag.Title = categoryName;
             return this.PartialView("_ProductList", products);
         }
 
@@ -63,6 +70,7 @@ namespace Peek.Web.Controllers
                 .Project()
                 .To<ProductPreviewViewModel>();
 
+            this.ViewBag.Title = "Latest products";
             return this.PartialView("_ProductList", products);
         }
     }

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Peek</title>
+    <title>Peek</title>
     @Styles.Render("~/Content/css")
 </head>
 <body>
@@ -19,7 +19,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home", new {area = string.Empty}, null)</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
                     @if (User.IsLoggedIn())
                     {
                         <li>@Html.ActionLink("My cart", "Index", "Cart", new { area = string.Empty }, null)</li>
@@ -30,14 +30,13 @@
         </article>
     </section>
     <section class="container body-content">
-        <h2 class="text-center col-md-9 col-md-offset-3">@ViewBag.Title</h2>
         <article class="col-md-3">
             @Html.Action("Index", "LeftSidebar", new { area = string.Empty })
         </article>
         <article class="col-md-9" id="main-content">
             @RenderBody()
         </article>
-        <hr/>
+        <hr />
         <footer>
             <p class="text-center">Peek&trade; 2015 - ASP.NET MVC Online Shop Application</p>
         </footer>
