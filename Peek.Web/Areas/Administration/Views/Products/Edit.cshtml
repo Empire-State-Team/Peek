@@ -1,6 +1,10 @@
 ﻿@model Peek.Web.Areas.Administration.InputModels.ProductInputModel
 @{
-    ViewBag.Title = "Edit product " + @Model.Id;
+    ViewBag.Title = "Edit product #" + @Model.Id;
 }
 
 @Html.EditorForModel()
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

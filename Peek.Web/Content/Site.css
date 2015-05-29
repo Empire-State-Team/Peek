@@ -26,3 +26,7 @@ textarea {
 .no-margin {
     margin: 0;
 }
+
+.break-word {
+    word-wrap: break-word;
+}
