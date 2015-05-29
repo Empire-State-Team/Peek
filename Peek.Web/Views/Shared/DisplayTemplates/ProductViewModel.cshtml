@@ -3,29 +3,32 @@
     ViewBag.Title = Model.Name;
 }
 
-<h2 class="text-center">@ViewBag.Title</h2>
-<div>
-    @if (User.IsAdmin())
-    {
-        @Html.ActionLink("Edit product", "Edit", "Products", new { id = Model.Id, area = "Administration" }, null)
-        <br />
-    }
-    
+<h2 class="text-center">
+    @ViewBag.Title
     @if (User.IsLoggedIn())
     {
-        @Ajax.ActionLink("Add to cart", "Add", "Cart", new { id = Model.Id }, new AjaxOptions { HttpMethod = "POST" })
+        if (User.IsAdmin())
+        {
+            <a href="@Url.Action("Edit", "Products", new { id = Model.Id, area = "Administration" })" title="Edit product">
+                <span class="glyphicon glyphicon-edit"></span></a>
+        }
+
+        @Ajax.RawActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "Cart", new { id = Model.Id },
+            new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "status-div" }, new { title = "Add to cart" })
         <br />
     }
-
-    @Html.LabelFor(m => m.Name)
+</h2>
+<div class="text-center" id="status-div"></div>
+<div>
+    @Html.LabelFor(m => m.Name):
     @Html.DisplayFor(m => m.Name)
     <br/>
 
-    @Html.LabelFor(m => m.Description)
+    @Html.LabelFor(m => m.Description):
     <span class="break-word">@Html.DisplayFor(m => m.Description)</span>
     <br/>
 
-    @Html.LabelFor(m => m.Price)
+    @Html.LabelFor(m => m.Price):
     @Html.DisplayFor(m => m.Price)
     <br/>
 
@@ -33,7 +36,7 @@
     {
         foreach (var url in Model.ImageUrls)
         {
-            <img src="@url" alt="img" class="img-responsive"/>
+            <img src="@url" alt="img" class="img-responsive" />
         }
     }
 </div>

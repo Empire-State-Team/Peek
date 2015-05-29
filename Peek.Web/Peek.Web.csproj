@@ -277,7 +277,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\BootstrapHelpers.cs" />
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\PrincipalExtensions.cs" />
     <Compile Include="Infrastructure\FileStorage\GoogleDriveStorageManager.cs" />
     <Compile Include="Infrastructure\FileStorage\IStorageManager.cs" />

@@ -55,7 +55,7 @@
 
             this.Cart.Add(product);
 
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            return this.Content("Product added to cart.");
         }
 
         [HttpPost]
@@ -86,7 +86,7 @@
             this.Data.Orders.Add(order);
             this.Data.SaveChanges();
 
-            return new HttpStatusCodeResult(HttpStatusCode.OK);
+            return this.Content("Order placed sucessfully.");
         }
 
         public ActionResult OrderHistory()
