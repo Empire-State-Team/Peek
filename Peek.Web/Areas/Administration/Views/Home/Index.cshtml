@@ -1,9 +1,13 @@
 ﻿@model IEnumerable<Peek.Web.ViewModels.CategoryViewModel>
 @{
-    ViewBag.Title = "Categories";
+    ViewBag.Title = "Peek Administration";
 }
 
 <h2 class="text-center">@ViewBag.Title</h2>
+@Html.ActionLink("Add category", "Add", "Categories", new { area = "Administration" }, null)
+<br />
+@Html.ActionLink("Add product", "Add", "Products", new { area = "Administration" }, null)
+<br />
 @if (Model.Any())
 {
     <table class="table table-bordered table-striped table-condensed">

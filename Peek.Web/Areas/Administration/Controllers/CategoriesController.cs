@@ -18,16 +18,6 @@
         {
         }
 
-        public ActionResult Index()
-        {
-            var categories = this.Data.Categories
-                .All()
-                .Project()
-                .To<CategoryViewModel>();
-
-            return this.View(categories);
-        }
-
         [HttpGet]
         public ActionResult Add()
         {

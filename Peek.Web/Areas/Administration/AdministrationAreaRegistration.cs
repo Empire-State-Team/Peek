@@ -17,7 +17,7 @@
             context.MapRoute(
                 "Administration_default",
                 "Administration/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "Peek.Web.Areas.Administration.Controllers" }
             );
         }
