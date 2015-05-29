@@ -39,12 +39,9 @@ namespace Peek.Data.Migrations
             }
 
             var users = context.Users.ToList();
-            var allProducts = context.Products.ToList();
-
-            for (int i = 0; i < 20; i++)
+            for (var i = 0; i < 20; i++)
             {
                 var products = new List<Product>();
-
                 foreach (var product in products)
                 {
                     if (this.random.RandomNumber(0, 100) % 2 == 0)
@@ -76,21 +73,20 @@ namespace Peek.Data.Migrations
             var categories = context.Categories.ToList();
             var users = context.Users.ToList();
 
-            for (int i = 0; i < 30; i++)
+            for (var i = 0; i < 30; i++)
             {
                 var product = new Product
-                    {
-                        Name = this.random.RandomString(10, 50),
-                        Description = this.random.RandomString(100, 1000),
-                        Price = this.random.RandomNumber(1, 120),
-                        Category = categories[this.random.RandomNumber(1, 100) % categories.Count],
-                        CreatedOn = DateTime.Now - new TimeSpan(this.random.RandomNumber(1, 500), 0, 0),
-                        CreatedUser = users[this.random.RandomNumber(1, users.Count() - 1)],
-                        InStock = this.random.RandomNumber(0, 10) % 2 == 0
-                    };
+                {
+                    Name = this.random.RandomString(5, 20),
+                    Description = this.random.RandomString(100, 1000),
+                    Price = this.random.RandomNumber(1, 120),
+                    Category = categories[this.random.RandomNumber(1, 100) % categories.Count],
+                    CreatedOn = DateTime.Now - new TimeSpan(this.random.RandomNumber(1, 500), 0, 0),
+                    CreatedUser = users[this.random.RandomNumber(1, users.Count() - 1)],
+                    InStock = this.random.RandomNumber(0, 10) % 2 == 0
+                };
 
-                var comments = new List<Comment>();
-                for (int k = 0; k < 40; k++)
+                for (var k = 0; k < 40; k++)
                 {
                     var comment = new Comment
                     {
@@ -174,7 +170,7 @@ namespace Peek.Data.Migrations
             this.userManager.Create(admin, "peekadmin");
             this.userManager.AddToRole(admin.Id, PeekConstants.AdminRole);
 
-            for (int i = 0; i < 15; i++)
+            for (var i = 0; i < 15; i++)
             {
                 var user = new User
                 {
