@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using Peek.Data.UnitOfWork;
-
-namespace Peek.Web.Controllers
+﻿namespace Peek.Web.Controllers
 {
+    using System.Web.Mvc;
+    using Peek.Data.UnitOfWork;
+
     public class HomeController : BaseController
     {
         public HomeController(IPeekData data)

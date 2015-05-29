@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper.QueryableExtensions;
-using Peek.Data.UnitOfWork;
-using Peek.Web.Infrastructure.FileStorage;
-using Peek.Web.ViewModels.Products;
-
-namespace Peek.Web.Controllers
+﻿namespace Peek.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Web;
+    using System.Web.Mvc;
+    using AutoMapper.QueryableExtensions;
+    using Peek.Data.UnitOfWork;
+    using Peek.Web.Infrastructure.FileStorage;
+    using Peek.Web.ViewModels.Products;
+
     public class ProductsController : BaseController
     {
         private readonly IStorageManager storageManager;

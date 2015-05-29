@@ -1,18 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Mvc;
-using AutoMapper.QueryableExtensions;
-using Peek.Data.UnitOfWork;
-using Peek.Models;
-using Peek.Web.ViewModels;
-using Peek.Web.ViewModels.Orders;
-using Peek.Web.ViewModels.Products;
-
-namespace Peek.Web.Controllers
+﻿namespace Peek.Web.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net;
+    using System.Web;
+    using System.Web.Mvc;
+    using AutoMapper.QueryableExtensions;
+    using Peek.Data.UnitOfWork;
+    using Peek.Models;
+    using Peek.Web.ViewModels.Orders;
+    using Peek.Web.ViewModels.Products;
+
     [Authorize]
     public class CartController : BaseController
     {
@@ -96,7 +95,8 @@ namespace Peek.Web.Controllers
                 .All()
                 .Where(o => o.UserId == this.CurrentUserId)
                 .Project()
-                .To<OrderViewModel>();
+                .To<OrderViewModel>()
+                .ToList();
 
             return this.View(orders);
         }
