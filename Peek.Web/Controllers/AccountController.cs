@@ -110,6 +110,7 @@
 
                     return this.RedirectToAction("Index", "Home");
                 }
+
                 this.AddErrors(result);
             }
 

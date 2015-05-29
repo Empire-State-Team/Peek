@@ -3,11 +3,10 @@
     using System;
     using System.Text;
 
-    public class RandomGenerator :IRandomGenerator
+    public class RandomGenerator : IRandomGenerator
     {
-        private readonly string Letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxvyz";
-
-        private Random random;
+        private const string Letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxvyz";
+        private readonly Random random;
 
         public RandomGenerator()
         {
@@ -18,7 +17,7 @@
         {
             var result = new StringBuilder();
             var length = this.random.Next(minLength, maxLength + 1);
-            for (int i = 0; i <= length; i++)
+            for (var i = 0; i <= length; i++)
             {
                 result.Append(Letters[this.random.Next(0, Letters.Length)]);
             }
