@@ -77,7 +77,7 @@ namespace Peek.Data.Migrations
             {
                 var product = new Product
                 {
-                    Name = this.random.RandomString(5, 20),
+                    Name = this.random.RandomString(5, 15),
                     Description = this.random.RandomString(100, 1000),
                     Price = this.random.RandomNumber(1, 120),
                     Category = categories[this.random.RandomNumber(1, 100) % categories.Count],
