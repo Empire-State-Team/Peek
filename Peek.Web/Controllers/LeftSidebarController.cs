@@ -15,6 +15,7 @@
         }
 
         [ChildActionOnly]
+        [OutputCache(Duration = 60 * 60)]
         public ActionResult Index()
         {
             var categories = this.Data.Categories

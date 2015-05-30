@@ -86,8 +86,8 @@
       <HintPath>..\packages\Google.Apis.Core.1.9.1\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Core.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Google.Apis.Drive.v2, Version=1.9.0.168, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Google.Apis.Drive.v2.1.9.0.1680\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Drive.v2.dll</HintPath>
+    <Reference Include="Google.Apis.Drive.v2, Version=1.9.0.170, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Drive.v2.1.9.0.1700\lib\portable-net40+sl50+win+wpa81+wp80\Google.Apis.Drive.v2.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Google.Apis.PlatformServices, Version=1.9.1.12397, Culture=neutral, processorArchitecture=MSIL">
@@ -299,6 +299,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\lightbox.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -309,6 +310,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Images\close.png" />
+    <Content Include="Images\loading.gif" />
+    <Content Include="Images\next.png" />
+    <Content Include="Images\prev.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Administration\Views\web.config" />
@@ -331,6 +336,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\lightbox.min.js" />
     <Content Include="Scripts\npm.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -363,6 +369,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Cart\OrderHistory.cshtml" />
+    <Content Include="Views\Products\ById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Peek.Common\Peek.Common.csproj">

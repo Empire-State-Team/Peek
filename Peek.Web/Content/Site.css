@@ -27,6 +27,15 @@ textarea {
     margin: 0;
 }
 
+.no-padding {
+    padding: 0;
+}
+
+.stretch {
+    height: 100%;
+    width: 100%;
+}
+
 .break-word {
     word-wrap: break-word;
 }

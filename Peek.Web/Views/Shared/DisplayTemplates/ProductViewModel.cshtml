@@ -1,7 +1,4 @@
 ﻿@model Peek.Web.ViewModels.Products.ProductViewModel
-@{
-    ViewBag.Title = Model.Name;
-}
 
 <h2 class="text-center">
     @ViewBag.Title
@@ -22,21 +19,23 @@
 <div>
     @Html.LabelFor(m => m.Name):
     @Html.DisplayFor(m => m.Name)
-    <br/>
+    <br />
 
     @Html.LabelFor(m => m.Description):
     <span class="break-word">@Html.DisplayFor(m => m.Description)</span>
-    <br/>
+    <br />
 
     @Html.LabelFor(m => m.Price):
     @Html.DisplayFor(m => m.Price)
-    <br/>
+    <br />
 
     @if (Model.ImageUrls != null)
     {
         foreach (var url in Model.ImageUrls)
         {
-            <img src="@url" alt="img" class="img-responsive" />
+            <div class="col-sm-4 no-padding">
+                <a href="@url" data-lightbox="images"><img src="@url" alt="product image" class="stretch" /></a>
+            </div>
         }
     }
 </div>
