@@ -8,7 +8,7 @@
     using Microsoft.AspNet.Identity.Owin;
     using Microsoft.Owin.Security;
     using Peek.Models;
-    using Peek.Web.Models;
+    using Peek.Web.ViewModels;
 
     [Authorize]
     public class AccountController : Controller

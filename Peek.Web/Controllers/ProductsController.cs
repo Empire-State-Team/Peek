@@ -1,6 +1,4 @@
-﻿using System.Web.Caching;
-
-namespace Peek.Web.Controllers
+﻿namespace Peek.Web.Controllers
 {
     using System;
     using System.Collections.Generic;
@@ -58,8 +56,10 @@ namespace Peek.Web.Controllers
                 .All()
                 .Where(p => p.InStock && p.CategoryId == id)
                 .Project()
-                .To<ProductPreviewViewModel>();
+                .To<ProductPreviewViewModel>()
+                .ToList();
 
+            this.GetImageUrls(products);
             this.ViewBag.Title = categoryName;
             return this.PartialView("_ProductList", products);
         }
@@ -73,10 +73,23 @@ namespace Peek.Web.Controllers
                 .OrderByDescending(p => p.CreatedOn)
                 .Take(count)
                 .Project()
-                .To<ProductPreviewViewModel>();
+                .To<ProductPreviewViewModel>()
+                .ToList();
 
+            this.GetImageUrls(products);
             this.ViewBag.Title = "Latest products";
             return this.PartialView("_ProductList", products);
+        }
+
+        private void GetImageUrls(IEnumerable<ProductPreviewViewModel> products)
+        {
+            foreach (var product in products)
+            {
+                if (product.ImagesFolderId != null)
+                {
+                    product.ImageUrl = this.storageManager.GetFileUrls(product.ImagesFolderId).First();
+                }
+            }
         }
     }
 }

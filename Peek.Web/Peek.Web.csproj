@@ -309,6 +309,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Images\close.png" />
+    <Content Include="Images\default-image.jpg" />
     <Content Include="Images\loading.gif" />
     <Content Include="Images\next.png" />
     <Content Include="Images\prev.png" />
