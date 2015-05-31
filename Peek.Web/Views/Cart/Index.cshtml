@@ -7,17 +7,17 @@
 
 @if (Model.Any())
 {
-    foreach (var product in Model)
-    {
-        <div>
-            @Html.ActionLink(product.Name, "ById", "Products", new { id = product.Id }, null)
-            @Ajax.RawActionLink("<span class='glyphicon glyphicon-remove'></span>", "Remove", "Cart", new { id = product.Id },
-                 new AjaxOptions { HttpMethod = "POST" }, new { onclick = "$(this).parent().fadeOut()", title = "Remove" })
-        </div>
-    }
-
-    <br />
     <div id="order-div">
+        @foreach (var product in Model)
+        {
+            <div>
+                @Html.ActionLink(product.Name, "ById", "Products", new { id = product.Id }, null)
+                @Ajax.RawActionLink("<span class='glyphicon glyphicon-remove'></span>", "Remove", "Cart", new { id = product.Id },
+                     new AjaxOptions { HttpMethod = "POST" }, new { onclick = "$(this).parent().fadeOut()", title = "Remove" })
+            </div>
+        }
+
+        <br />
         @using (Ajax.BeginForm("Order", "Cart", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "order-div" }, new { id = "order-form" }))
         {
             @Html.AntiForgeryToken()

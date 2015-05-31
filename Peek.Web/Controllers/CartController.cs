@@ -87,6 +87,7 @@
 
             this.Data.Orders.Add(order);
             this.Data.SaveChanges();
+            this.Cart.Clear();
 
             return this.Content("Order placed sucessfully.");
         }
