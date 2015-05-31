@@ -20,7 +20,6 @@
             this.storageManager = storageManager;
         }
 
-        [OutputCache(Duration = 60 * 5)]
         public ActionResult ById(int id)
         {
             var product = this.Data.Products
@@ -43,7 +42,6 @@
             return this.View(product);
         }
 
-        [OutputCache(Duration = 60 * 5)]
         public ActionResult ByCategory(int id)
         {
             var categoryName = this.Data.Categories
@@ -64,7 +62,6 @@
             return this.PartialView("_ProductList", products);
         }
 
-        [OutputCache(Duration = 60 * 5)]
         public ActionResult Latest(int count = 5)
         {
             var products = this.Data.Products

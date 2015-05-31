@@ -18,7 +18,11 @@
 
     <br />
     <div id="order-div">
-        @Ajax.ActionLink("Place order", "Order", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "order-div" })
+        @using (Ajax.BeginForm("Order", "Cart", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "order-div" }, new { id = "order-form" }))
+        {
+            @Html.AntiForgeryToken()
+            <a href="#" data-ajax="true" onclick="$('#order-form').submit()">Place order</a>
+        }
     </div>
 }
 else

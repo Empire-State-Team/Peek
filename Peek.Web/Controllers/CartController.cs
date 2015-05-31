@@ -68,6 +68,7 @@
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Order()
         {
             var productIds = this.Cart.Select(p => p.Id);
@@ -75,6 +76,7 @@
                 .All()
                 .Where(p => productIds.Contains(p.Id))
                 .ToList();
+
             var order = new Order
             {
                 Products = products,
@@ -94,6 +96,7 @@
             var orders = this.Data.Orders
                 .All()
                 .Where(o => o.UserId == this.CurrentUserId)
+                .OrderByDescending(o => o.CreatedOn)
                 .Project()
                 .To<OrderViewModel>()
                 .ToList();
