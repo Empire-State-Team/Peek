@@ -1,6 +1,6 @@
 ﻿namespace Peek.Common
 {
-    public  static class PeekConstants
+    public static class PeekConstants
     {
         public const string AdminRole = "Admin";
 
