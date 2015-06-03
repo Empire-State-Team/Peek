@@ -43,6 +43,16 @@ textarea {
 
 .product-container {
     width: 205px;
-    /*height: 245px;*/
+    height: 189px;
     margin: 1%
+}
+
+.product-image {
+    width: 165px;
+    height: 110px;
+}
+
+.product-image-expanded {
+    width: 240px;
+    height: 160px;
 }

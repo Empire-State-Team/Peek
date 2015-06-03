@@ -3,6 +3,7 @@
 <a href="@Url.Action("ById", "Products", new { id = Model.Id })">
     <div class="well text-center center-block">
         @Model.Name
-        <img src="@(Model.ImageUrl ?? "/Images/default-image.jpg")" alt="product-image" class="img-responsive img-rounded" />
+        <img src="@(Model.ImageUrl ?? "/Images/default-image.jpg")" alt="product-image" 
+             class="img-responsive img-rounded product-image" />
     </div>
 </a>

@@ -7,7 +7,8 @@
         if (User.IsAdmin())
         {
             <a href="@Url.Action("Edit", "Products", new { id = Model.Id, area = "Administration" })" title="Edit product">
-                <span class="glyphicon glyphicon-edit"></span></a>
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
         }
 
         @Ajax.RawActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "Cart", new { id = Model.Id },
@@ -20,17 +21,15 @@
     <div class="col-lg-8">
         @Html.LabelFor(m => m.Name):
         @Html.DisplayFor(m => m.Name)
-        <br/>
+        <br />
 
         @Html.LabelFor(m => m.Description):
         <span class="break-word">@Html.DisplayFor(m => m.Description)</span>
-        <br/>
+        <br />
 
         @Html.LabelFor(m => m.Price):
         @Html.DisplayFor(m => m.Price)
-        <br/>
-
-
+        <br />
     </div>
     <div class="col-lg-4">
         @if (Model.ImageUrls != null)
@@ -38,7 +37,9 @@
             foreach (var url in Model.ImageUrls)
             {
                 <div class="col-md-12 no-padding">
-                    <a href="@url" data-lightbox="images"><img src="@url" alt="product image" class="stretch img-rounded" /></a>
+                    <a href="@url" data-lightbox="images">
+                        <img src="@url" alt="product image" class="stretch img-rounded product-image-expanded" />
+                    </a>
                 </div>
             }
         }
