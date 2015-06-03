@@ -1,4 +1,5 @@
-﻿@model Peek.Web.ViewModels.Products.ProductViewModel
+﻿@using Peek.Web.ViewModels.Comments
+@model Peek.Web.ViewModels.Products.ProductViewModel
 
 <h2 class="text-center">
     @ViewBag.Title
@@ -7,7 +8,8 @@
         if (User.IsAdmin())
         {
             <a href="@Url.Action("Edit", "Products", new { id = Model.Id, area = "Administration" })" title="Edit product">
-                <span class="glyphicon glyphicon-edit"></span></a>
+                <span class="glyphicon glyphicon-edit"></span>
+            </a>
         }
 
         @Ajax.RawActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "Cart", new { id = Model.Id },
@@ -35,8 +37,29 @@
         @foreach (var url in Model.ImageUrls)
         {
             <a href="@url" data-lightbox="images">
-                <img src="@url" alt="product image" class="img-rounded product-image-expanded"/>
+                <img src="@url" alt="product image" class="img-rounded product-image-expanded" />
             </a>
+        }
+    </div>
+}
+
+@if (Model.Comments.Count() > 0)
+{
+    <br />
+    if (User.IsLoggedIn())
+    {
+        <a href='@Url.Action("MyAction", "MyController")'>
+            <img class="icon small" src='@Url.Content("~/Content/Images/comment-icon.jpg")' />
+        </a>
+    }
+    <div class="row comments">
+        @foreach (CommentViewModel comment in Model.Comments)
+        {
+            <div class="comment col-md-10 col-md-offset-1">
+                <strong class="left break-word">@comment.Username</strong>
+                <small class="right"><time>@comment.PostedAt</time></small>
+                <p class="comment-content">@comment.Text</p>
+            </div>
         }
     </div>
 }

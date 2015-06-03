@@ -213,6 +213,7 @@
     <Compile Include="ViewModels\CategoryViewModel.cs" />
     <Compile Include="ViewModels\LeftSidebarViewModel.cs" />
     <Compile Include="ViewModels\Orders\OrderViewModel.cs" />
+    <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
     <Compile Include="ViewModels\Products\ProductPreviewViewModel.cs" />
     <Compile Include="ViewModels\Products\ProductViewModel.cs" />
   </ItemGroup>
@@ -221,6 +222,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\comment-icon.jpg" />
     <Content Include="Content\lightbox.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

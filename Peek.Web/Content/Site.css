@@ -44,7 +44,7 @@ textarea {
 .product-container {
     width: 205px;
     height: 189px;
-    margin: 1%
+    margin: 1%;
 }
 
 .product-image {
@@ -56,3 +56,19 @@ textarea {
     width: 240px;
     height: 160px;
 }
+
+.icon.small {
+    height: 50px;
+    width: 50px;
+}
+.comments {
+}
+.comment{
+    margin:10px 0;
+    margin-left:40px;
+}
+.right{
+    float:right;
+    padding-right:40px;
+}
+

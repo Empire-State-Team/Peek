@@ -4,6 +4,7 @@
     using AutoMapper;
     using Peek.Models;
     using Peek.Web.Infrastructure.Mapping;
+    using Peek.Web.ViewModels.Comments;
 
     public class ProductViewModel : IMapFrom<Product>, IHaveCustomMappings
     {
@@ -22,6 +23,8 @@
         public string ImagesFolderId { get; set; }
 
         public IEnumerable<string> ImageUrls { get; set; }
+
+        public ICollection<CommentViewModel> Comments { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
         {
