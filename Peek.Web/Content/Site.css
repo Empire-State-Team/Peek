@@ -37,5 +37,12 @@ textarea {
 }
 
 .break-word {
+    -ms-word-wrap: break-word;
     word-wrap: break-word;
+}
+
+.product-container {
+    width: 205px;
+    /*height: 245px;*/
+    margin: 1%
 }

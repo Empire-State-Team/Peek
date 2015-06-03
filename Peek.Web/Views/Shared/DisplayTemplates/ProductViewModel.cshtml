@@ -16,26 +16,32 @@
     }
 </h2>
 <div class="text-center" id="status-div"></div>
-<div>
-    @Html.LabelFor(m => m.Name):
-    @Html.DisplayFor(m => m.Name)
-    <br />
+<div class="row">
+    <div class="col-lg-8">
+        @Html.LabelFor(m => m.Name):
+        @Html.DisplayFor(m => m.Name)
+        <br/>
 
-    @Html.LabelFor(m => m.Description):
-    <span class="break-word">@Html.DisplayFor(m => m.Description)</span>
-    <br />
+        @Html.LabelFor(m => m.Description):
+        <span class="break-word">@Html.DisplayFor(m => m.Description)</span>
+        <br/>
 
-    @Html.LabelFor(m => m.Price):
-    @Html.DisplayFor(m => m.Price)
-    <br />
+        @Html.LabelFor(m => m.Price):
+        @Html.DisplayFor(m => m.Price)
+        <br/>
 
-    @if (Model.ImageUrls != null)
-    {
-        foreach (var url in Model.ImageUrls)
+
+    </div>
+    <div class="col-lg-4">
+        @if (Model.ImageUrls != null)
         {
-            <div class="col-md-4 no-padding">
-                <a href="@url" data-lightbox="images"><img src="@url" alt="product image" class="stretch img-rounded" /></a>
-            </div>
+            foreach (var url in Model.ImageUrls)
+            {
+                <div class="col-md-12 no-padding">
+                    <a href="@url" data-lightbox="images"><img src="@url" alt="product image" class="stretch img-rounded" /></a>
+                </div>
+            }
         }
-    }
+    </div>
 </div>
+
