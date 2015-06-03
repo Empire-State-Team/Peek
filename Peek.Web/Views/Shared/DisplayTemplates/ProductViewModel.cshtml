@@ -7,8 +7,7 @@
         if (User.IsAdmin())
         {
             <a href="@Url.Action("Edit", "Products", new { id = Model.Id, area = "Administration" })" title="Edit product">
-                <span class="glyphicon glyphicon-edit"></span>
-            </a>
+                <span class="glyphicon glyphicon-edit"></span></a>
         }
 
         @Ajax.RawActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "Cart", new { id = Model.Id },
@@ -18,31 +17,26 @@
 </h2>
 <div class="text-center" id="status-div"></div>
 <div class="row">
-    <div class="col-lg-8">
-        @Html.LabelFor(m => m.Name):
-        @Html.DisplayFor(m => m.Name)
-        <br />
+    @Html.LabelFor(m => m.Name):
+    @Html.DisplayFor(m => m.Name)
+    <br />
 
-        @Html.LabelFor(m => m.Description):
-        <span class="break-word">@Html.DisplayFor(m => m.Description)</span>
-        <br />
+    @Html.LabelFor(m => m.Description):
+    <span class="break-word">@Html.DisplayFor(m => m.Description)</span>
+    <br />
 
-        @Html.LabelFor(m => m.Price):
-        @Html.DisplayFor(m => m.Price)
-        <br />
-    </div>
-    <div class="col-lg-4">
-        @if (Model.ImageUrls != null)
+    @Html.LabelFor(m => m.Price):
+    @Html.DisplayFor(m => m.Price)
+</div>
+@if (Model.ImageUrls != null)
+{
+    <br />
+    <div class="row">
+        @foreach (var url in Model.ImageUrls)
         {
-            foreach (var url in Model.ImageUrls)
-            {
-                <div class="col-md-12 no-padding">
-                    <a href="@url" data-lightbox="images">
-                        <img src="@url" alt="product image" class="stretch img-rounded product-image-expanded" />
-                    </a>
-                </div>
-            }
+            <a href="@url" data-lightbox="images">
+                <img src="@url" alt="product image" class="img-rounded product-image-expanded"/>
+            </a>
         }
     </div>
-</div>
-
+}
