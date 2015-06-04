@@ -48,9 +48,11 @@
     <br />
     if (User.IsLoggedIn())
     {
-        <a href='@Url.Action("MyAction", "MyController")'>
-            <img class="icon small" src='@Url.Content("~/Content/Images/comment-icon.jpg")' />
-        </a>
+
+        @Ajax.RawActionLink("<img class='icon small' src='/Content/Images/comment-icon.jpg' />", "CreateForProductId", "Comments", null,
+            new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "commentCreateForm" }, new { title = "Create Comment" })
+
+        <div id="commentCreateForm"></div>
     }
     <div class="row comments">
         @foreach (CommentViewModel comment in Model.Comments)
@@ -62,4 +64,8 @@
             </div>
         }
     </div>
+}
+
+@section scripts {
+    @Scripts.Render("~/bundles/jquery");
 }
