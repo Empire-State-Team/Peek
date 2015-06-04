@@ -295,7 +295,7 @@
     <Content Include="Views\Home\Profile.cshtml" />
     <Content Include="Views\Cart\OrderHistory.cshtml" />
     <Content Include="Views\Products\ById.cshtml" />
-    <Content Include="Views\_CreateCommentForProduct.cshtml" />
+    <Content Include="Views\Comments\_AddCommentForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Peek.Common\Peek.Common.csproj">
@@ -314,9 +314,7 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Comments\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

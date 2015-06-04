@@ -1,5 +1,4 @@
-﻿@using Peek.Web.ViewModels.Comments
-@model Peek.Web.ViewModels.Products.ProductViewModel
+﻿@model Peek.Web.ViewModels.Products.ProductViewModel
 
 <h2 class="text-center">
     @ViewBag.Title
@@ -8,8 +7,7 @@
         if (User.IsAdmin())
         {
             <a href="@Url.Action("Edit", "Products", new { id = Model.Id, area = "Administration" })" title="Edit product">
-                <span class="glyphicon glyphicon-edit"></span>
-            </a>
+                <span class="glyphicon glyphicon-edit"></span></a>
         }
 
         @Ajax.RawActionLink("<span class='glyphicon glyphicon-plus'></span>", "Add", "Cart", new { id = Model.Id },
@@ -43,19 +41,20 @@
     </div>
 }
 
-@if (Model.Comments.Count() > 0)
+@if (Model.Comments.Any())
 {
     <br />
     if (User.IsLoggedIn())
     {
+        @Ajax.RawActionLink("<img class='icon small' src='/Content/Images/comment-icon.jpg' />",
+            "CreateForProductId", "Comments", new { id = Model.Id },
+            new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "addCommentForm" }, 
+            new { title = "Create Comment" })
 
-        @Ajax.RawActionLink("<img class='icon small' src='/Content/Images/comment-icon.jpg' />", "CreateForProductId", "Comments", null,
-            new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "commentCreateForm" }, new { title = "Create Comment" })
-
-        <div id="commentCreateForm"></div>
+        <div id="addCommentForm"></div>
     }
     <div class="row comments">
-        @foreach (CommentViewModel comment in Model.Comments)
+        @foreach (var comment in Model.Comments)
         {
             <div class="comment col-md-10 col-md-offset-1">
                 <strong class="left break-word">@comment.Username</strong>
@@ -64,8 +63,4 @@
             </div>
         }
     </div>
-}
-
-@section scripts {
-    @Scripts.Render("~/bundles/jquery");
 }
