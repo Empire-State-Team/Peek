@@ -1,7 +1,7 @@
 ﻿namespace Peek.Web.ViewModels.Comments
 {
     using System;
-
+    using AutoMapper;
     using Peek.Models;
     using Peek.Web.Infrastructure.Mapping;
 
@@ -15,11 +15,10 @@
 
         public string Username { get; set; }
 
-        public void CreateMappings(AutoMapper.IConfiguration configuration)
+        public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Comment, CommentViewModel>()
-                .ForMember(c => c.Username, options => options.MapFrom(cvm => cvm.User.UserName))
-                .ReverseMap();
+                .ForMember(c => c.Username, options => options.MapFrom(cvm => cvm.User.UserName));
         }
     }
 }
