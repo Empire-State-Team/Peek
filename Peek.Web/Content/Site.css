@@ -61,13 +61,13 @@ textarea {
     height: 50px;
     width: 50px;
 }
-.comments {
-}
-.comment{
+
+.comment {
     margin:10px 0;
     margin-left:40px;
 }
-.right{
+
+.right {
     float:right;
     padding-right:40px;
 }
